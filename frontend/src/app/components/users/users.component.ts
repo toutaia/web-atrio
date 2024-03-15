@@ -17,8 +17,8 @@ import {CreateUserComponent} from "../create-user/create-user.component";
 export class UsersComponent {
 
     get users() {
-        return this.userService.users;
+        return this._userService.users;
     }
-    constructor(private userService: UserService) {
+    constructor(private _userService: UserService) {
     }
 }

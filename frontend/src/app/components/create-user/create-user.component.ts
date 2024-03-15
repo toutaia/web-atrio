@@ -39,30 +39,24 @@ export class CreateUserComponent implements OnInit {
     this.oldestDate = date.toISOString().slice(0, 10);
   }
 
-  constructor(private userService: UserService) {
-
+  constructor(private _userService: UserService) {
   }
 
   onCreateUser() {
     if (this.user.birthDate > this.oldestDate) {
 
-      this.userService.users.push(this.user);
+      this._userService.addUser(this.user);
 
       this.user = {
         firstName: '',
         lastName: '',
-        birthDate: '',
+        birthDate: new Date().toISOString().slice(0, 10),
         jobs: [],
       }
       this.hasDateError = false;
     } else {
       this.hasDateError = true;
     }
-  }
-
-  onReset() {
-    this.submitted = false;
-
   }
 
   addJob() {

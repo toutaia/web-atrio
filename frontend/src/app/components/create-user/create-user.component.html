@@ -1,17 +1,16 @@
-<div class="container">
   <h1>Personne</h1>
   <div class="mb-3">
     <label for="user-last-name" class="form-label">Nom</label>
-    <input id="user-last-name" class="form-control" type="text" placeholder="last name" [(ngModel)]="user.lastName"/>
+    <input id="user-last-name" class="form-control" type="text" placeholder="last name" [(ngModel)]="user.lastName" required/>
   </div>
   <div class="mb-3">
     <label for="user-first-name" class="form-label">Prenom</label>
-    <input id="user-first-name" class="form-control" type="text" placeholder="first name" [(ngModel)]="user.firstName"/>
+    <input id="user-first-name" class="form-control" type="text" placeholder="first name" [(ngModel)]="user.firstName" required/>
   </div>
   <div class="mb-3">
     <label for="user-birth-date" class="form-label">Date de naissance</label>
     <input id="user-birth-date" class="form-control" type="date" [(ngModel)]="user.birthDate"
-           [ngClass]="{'is-invalid' : hasDateError}"/>
+           [ngClass]="{'is-invalid' : hasDateError}" required/>
     <div class="invalid-feedback" *ngIf="hasDateError">
       Vous devez enter une date de naissance inférieure a 150 ans
     </div>
@@ -32,7 +31,7 @@
     </div>
     <div class="mb-3 form-check">
       <label for="job-start" class="form-label">Begening</label>
-      <input id="job-start" class="form-control" type="date" [(ngModel)]="job.start"/>
+      <input id="job-start" class="form-control" type="date" [(ngModel)]="job.start" required/>
     </div>
     <div class="mb-3 form-check">
       <label for="job-end" class="form-label">End</label>
@@ -43,5 +42,3 @@
     <button class="btn btn-primary" type="button" (click)="addJob()">Ajouter une expériences</button>
   </div>
   <button class="btn btn-primary" type="submit" (click)="onCreateUser()">Créer Personne</button>
-</div>
-<pre>{{ user | json }}</pre>
