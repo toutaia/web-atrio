@@ -1,0 +1,21 @@
+<div class="mb-3">
+  <label for="user-first-name" class="form-label">First Name</label>
+  <input id="user-first-name" class="form-control" type="text" placeholder="first name" [(ngModel)]="user.firstName"/>
+</div>
+<div class="mb-3">
+  <label for="user-last-name" class="form-label">Last Name</label>
+  <input id="user-last-name" class="form-control" type="text" placeholder="last name" [(ngModel)]="user.lastName"/>
+</div>
+<div class="mb-3">
+  <label for="user-birth-date" class="form-label">Birth Date</label>
+  <input id="user-birth-date" class="form-control" type="date" placeholder="first name" [(ngModel)]="user.birthDate"
+         [ngClass]="{'is-invalid' : hasDateError}"/>
+  <div class="invalid-feedback" *ngIf="hasDateError">
+    Vous devez enter une date de naissance inférieure a 150 ans
+  </div>
+</div>
+<div class="mb-3">
+  <button class="btn btn-primary" type="submit" (click)="onCreateUser()">Create User</button>
+</div>
+
+<pre>{{ user | json }}</pre>

@@ -1,0 +1,17 @@
+<div>
+  <h1>Users</h1>
+</div>
+<div>
+  <h3>Create User</h3>
+</div>
+<app-create-user></app-create-user>
+
+<div>
+  <h3>User List</h3>
+</div>
+
+<div *ngFor="let user of  users">
+  {{ user | json }}
+</div>
+
+
