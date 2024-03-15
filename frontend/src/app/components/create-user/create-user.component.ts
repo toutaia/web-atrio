@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserModel} from "../../models/user.model";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {DatePipe, JsonPipe, NgClass, NgIf} from "@angular/common";
+import {DatePipe, JsonPipe, NgClass, NgForOf, NgIf} from "@angular/common";
 import {UserService} from "../../services/user.service";
 
 @Component({
@@ -13,7 +13,8 @@ import {UserService} from "../../services/user.service";
     JsonPipe,
     ReactiveFormsModule,
     NgClass,
-    NgIf
+    NgIf,
+    NgForOf
   ],
   templateUrl: './create-user.component.html',
   styleUrl: './create-user.component.scss'
@@ -21,12 +22,12 @@ import {UserService} from "../../services/user.service";
 export class CreateUserComponent implements OnInit {
 
   submitted = false;
-  hasDateError:boolean =  false;
+  hasDateError: boolean = false;
 
   user: UserModel = {
     firstName: '',
     lastName: '',
-    birthDate: new Date().toISOString().slice(0,10),
+    birthDate: new Date().toISOString().slice(0, 10),
     jobs: [],
   }
 
@@ -35,7 +36,7 @@ export class CreateUserComponent implements OnInit {
   ngOnInit() {
     let date = new Date();
     date.setFullYear(date.getFullYear() - 150);
-    this.oldestDate =date.toISOString().slice(0,10);
+    this.oldestDate = date.toISOString().slice(0, 10);
   }
 
   constructor(private userService: UserService) {
@@ -62,5 +63,16 @@ export class CreateUserComponent implements OnInit {
   onReset() {
     this.submitted = false;
 
+  }
+
+  addJob() {
+    this.user.jobs.push({
+        company: '',
+        job: '',
+        start: '',
+        end: '',
+        isCurrentJob: false
+      }
+    )
   }
 }
